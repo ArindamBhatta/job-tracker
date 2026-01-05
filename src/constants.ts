@@ -1,4 +1,4 @@
-import { Request, Response } from 'express'
+import { NextFunction, Request, Response } from 'express'
 
 export enum HttpMethod {
   POST = 'post',
@@ -14,4 +14,5 @@ export enum ApiVersion {
 export interface ControllerPayload {
   req: Request
   res: Response
+  next: NextFunction
 }
