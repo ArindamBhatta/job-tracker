@@ -1,4 +1,5 @@
 import { pgTable, text, boolean, bigint, uniqueIndex } from 'drizzle-orm/pg-core';
+import { InferSelectModel, InferInsertModel } from 'drizzle-orm';
 
 export const users = pgTable('users', {
   id: text('id').primaryKey(),
@@ -9,3 +10,6 @@ export const users = pgTable('users', {
 }, (users) => ({
   emailIndex: uniqueIndex('email_idx').on(users.email),
 }));
+
+export type User = InferSelectModel<typeof users>;
+export type NewUser = InferInsertModel<typeof users>;
